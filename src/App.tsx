@@ -128,7 +128,7 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         from_email: formData.email,
         message: formData.message,
       },
-      {
+      { 
         publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       }
     );
@@ -444,7 +444,7 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         
 <section className="section contact-section" id="contact">
   <div className="container">
-    <p className="eyebrow">05 / CONTACT</p>
+    <p className="eyebrow">04 / CONTACT</p>
 
     <div className="contact-grid">
       <div className="contact-intro">
@@ -466,7 +466,7 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
           </a>
 
           <a
-            href="https://github.com/Abdurazzak02/mon-portfolio.git"
+            href="https://github.com/Abdurazzak02"
             target="_blank"
             rel="noreferrer"
           >
