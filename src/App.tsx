@@ -52,16 +52,25 @@ const skills = [
 
 const projects = [
   
+
 {
   number: '01',
-  category: 'Automobile · Développement web',
+  category: 'Automobile · Développement front-end',
   title: 'ADNC AUTOMOBILE',
-  status: 'Projet réalisé',
+  status: 'Projet réalisé en équipe',
   image: adncImage,
   description:
-    'Conception et réalisation d’un site web dédié à la vente et à la location de véhicules, pensé pour faciliter la découverte des offres automobiles.',
-  tags: ['Développement web', 'Vente automobile', 'Location'],
+    'Participation au développement d’un site web dédié à la vente et à la location de véhicules. Contribution à la création des pages, à la mise en forme des cartes de véhicules, à la navigation et à l’adaptation de l’interface aux écrans mobiles.',
+  tags: [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'Responsive design',
+    'Navigation web',
+    'Travail en équipe',
+  ],
 },
+
 {
   number: '02',
   category: 'Obligation religieuse · Web & mobile',
@@ -418,21 +427,19 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
                       ))}
                     </div>
                     
-                        {project.title === 'ADNC AUTOMOBILE' ? (
-                        <a
-                            className="project-link"
-                            href="#contact"
-                        >
-                            Voir le projet <span aria-hidden="true">↗</span>
-                        </a>
-                        ) : project.title === 'Hajjrah' ? (
-                        <a
-                            className="project-link"
-                            href="#contact"
-                        >
-                            Découvrir le concept <span aria-hidden="true">↗</span>
-                        </a>
-                        ) : null}
+                        
+                    {project.title === 'ADNC AUTOMOBILE' ? (
+                    <a className="project-link" href="#contact">
+                        Discuter d’un projet similaire
+                        <span aria-hidden="true"> ↗</span>
+                    </a>
+                    ) : project.title === 'Hajjrah' ? (
+                    <a className="project-link" href="#contact">
+                        Discuter du concept
+                        <span aria-hidden="true"> ↗</span>
+                    </a>
+                    ) : null}
+
                   </div>
                   <span className="project-icon">↗</span>
                 </article>
