@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import portrait from './assets/portrait.jpg';
 import adncImage from './assets/projects/adnc-automobile.png';
+import adncHomeImage from './assets/projects/adnc-automobile-home.png';
 import emailjs from "@emailjs/browser";
 
 const skills = [
@@ -49,8 +50,19 @@ const skills = [
 ]
 
 
+type Project = {
+  number: string;
+  category: string;
+  title: string;
+  status?: string;
+  image?: string;
+  gallery?: string[];
+  description: string;
+  tags: string[];
+};
 
-const projects = [
+
+const projects: Project[] = [
   
 
 {
@@ -59,6 +71,10 @@ const projects = [
   title: 'ADNC AUTOMOBILE',
   status: 'Projet réalisé en équipe',
   image: adncImage,
+  gallery: [
+    adncImage,
+    adncHomeImage,
+  ],
   description:
     'Participation au développement d’un site web dédié à la vente et à la location de véhicules. Contribution à la création des pages, à la mise en forme des cartes de véhicules, à la navigation et à l’adaptation de l’interface aux écrans mobiles.',
   tags: [
@@ -66,7 +82,7 @@ const projects = [
     'CSS',
     'JavaScript',
     'Responsive design',
-    'Navigation web',
+    'navigation web',
     'Travail en équipe',
   ],
 },
@@ -398,16 +414,39 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
             <div className="projects-list">
               {projects.map((project) => (
                 <article className="project-card" key={project.number}>   
-                {project.image && (
-                <div className="project-image-wrapper">
+            {project.gallery && project.gallery.length > 0 ? (
+            <div className="project-gallery">
+                {project.gallery.map((image, index) => (
+                <figure className="project-gallery-item" key={image}>
                     <img
-                    src={project.image}
-                    alt={`Aperçu du projet ${project.title}`}
+                    src={image}
+                    alt={
+                        index === 0
+                        ? "Page d'accueil du projet ADNC AUTOMOBILE"
+                        : "Vue complémentaire du projet ADNC AUTOMOBILE"
+                    }
                     className="project-image"
                     loading="lazy"
                     />
-                </div>
-                )}
+                    <figcaption>
+                    {index === 0
+                        ? "Page d'accueil"
+                        : "Vue complémentaire"}
+                    </figcaption>
+                </figure>
+                ))}
+            </div>
+            ) : project.image ? (
+            <div className="project-image-wrapper">
+                <img
+                src={project.image}
+                alt={`Aperçu du projet ${project.title}`}
+                className="project-image"
+                loading="lazy"
+                />
+            </div>
+            ) : null}
+
                   <span className="project-number">{project.number}</span>
                   <div className="project-main">
                     
@@ -428,9 +467,10 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
                     </div>
                     
                         
+                    
                     {project.title === 'ADNC AUTOMOBILE' ? (
                     <a className="project-link" href="#contact">
-                        Discuter d’un projet similaire
+                        Demander des informations
                         <span aria-hidden="true"> ↗</span>
                     </a>
                     ) : project.title === 'Hajjrah' ? (
@@ -439,6 +479,7 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
                         <span aria-hidden="true"> ↗</span>
                     </a>
                     ) : null}
+
 
                   </div>
                   <span className="project-icon">↗</span>
