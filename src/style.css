@@ -3154,3 +3154,93 @@ body {
     grid-row: 3;
   }
 }
+
+
+/* Galerie des captures du projet ADNC AUTOMOBILE */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.project-gallery-item {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  background: #0b1020;
+}
+
+.project-gallery-item .project-image {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+}
+
+.project-gallery-item figcaption {
+  padding: 10px 12px;
+  color: #55d6ff;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-gallery-item .project-image {
+    height: 240px;
+  }
+}
+
+/* Correction de la galerie ADNC AUTOMOBILE */
+.project-card:has(.project-gallery) {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+
+.project-card:has(.project-gallery) .project-gallery {
+  grid-column: 1 / -1;
+  grid-row: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  gap: 16px;
+}
+
+.project-card:has(.project-gallery) .project-gallery-item {
+  width: 100%;
+  min-width: 0;
+}
+
+.project-card:has(.project-gallery) .project-gallery-item .project-image {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.project-card:has(.project-gallery) .project-number,
+.project-card:has(.project-gallery) .project-main,
+.project-card:has(.project-gallery) .project-icon {
+  grid-column: 1;
+  grid-row: auto;
+}
+
+@media (max-width: 600px) {
+  .project-card:has(.project-gallery) .project-gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-card:has(.project-gallery) .project-gallery-item .project-image {
+    height: 240px;
+  }
+}
