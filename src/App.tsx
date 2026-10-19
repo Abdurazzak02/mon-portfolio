@@ -64,7 +64,7 @@ const projects = [
 },
 {
   number: '02',
-  category: 'Tourisme religieux · Web & mobile',
+  category: 'Obligation religieuse · Web & mobile',
   title: 'Hajjrah',
   status: 'En phase de conception',
   description:
@@ -113,6 +113,7 @@ function App() {
 const [isSending, setIsSending] = useState(false);
 const [formStatus, setFormStatus] = useState("");
 
+
 const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault();
   setIsSending(true);
@@ -134,8 +135,23 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 
     setFormStatus("Message envoyé avec succès !");
     setFormData({ name: "", email: "", message: "" });
-  } catch (error) {
-    console.error("Erreur EmailJS :", error);
+  } catch (error: unknown) {
+    console.error("Échec de l'envoi EmailJS :", error);
+
+    if (typeof error === "object" && error !== null) {
+      const details = error as {
+        status?: unknown;
+        text?: unknown;
+        message?: unknown;
+      };
+
+      console.error("Détails techniques EmailJS :", {
+        status: details.status,
+        text: details.text,
+        message: details.message,
+      });
+    }
+
     setFormStatus(
       "L'envoi a échoué. Vérifiez la configuration et réessayez."
     );
@@ -143,6 +159,7 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     setIsSending(false);
   }
 };
+
 
   return (
     <>
@@ -449,7 +466,7 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
           </a>
 
           <a
-            href="https://github.com/Abdurazzak02/DIOUKAMADY"
+            href="https://github.com/Abdurazzak02/mon-portfolio.git"
             target="_blank"
             rel="noreferrer"
           >
